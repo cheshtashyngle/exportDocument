@@ -1,5 +1,6 @@
 package com.document.movies;
 
+import com.document.DocumentBuilder;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -10,7 +11,8 @@ import static org.junit.Assert.*;
 
 public class MoviesDocumentBuilderTest {
 
-    private final MoviesDocumentBuilder moviesDocumentBuilder = new MoviesDocumentBuilder();
+    private final DocumentBuilder documentBuilder = new DocumentBuilder();
+    private final MoviesDocumentBuilder moviesDocumentBuilder = new MoviesDocumentBuilder(documentBuilder);
 
     @Test
     public void shouldBuildDocument() {

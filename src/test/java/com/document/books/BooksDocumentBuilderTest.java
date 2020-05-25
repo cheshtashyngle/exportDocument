@@ -1,5 +1,6 @@
 package com.document.books;
 
+import com.document.DocumentBuilder;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -10,7 +11,8 @@ import static org.junit.Assert.assertThat;
 
 public class BooksDocumentBuilderTest {
 
-    private final BooksDocumentBuilder booksDocumentBuilder = new BooksDocumentBuilder();
+    private final DocumentBuilder documentBuilder = new DocumentBuilder();
+    private final BooksDocumentBuilder booksDocumentBuilder = new BooksDocumentBuilder(documentBuilder);
 
     @Test
     public void shouldBuildDocument() {

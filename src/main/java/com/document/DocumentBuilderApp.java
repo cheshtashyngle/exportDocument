@@ -8,8 +8,10 @@ import java.util.List;
 public class DocumentBuilderApp {
 
     public static void main(String[] args) {
+        DocumentBuilder documentBuilder = new DocumentBuilder();
+
         BookRepository bookRepository = new BookRepository();
-        BooksDocumentBuilder booksDocumentBuilder = new BooksDocumentBuilder();
+        BooksDocumentBuilder booksDocumentBuilder = new BooksDocumentBuilder(documentBuilder);
         BooksMapper booksMapper = new BooksMapper();
 
         List<Book> books = bookRepository.books();
@@ -19,7 +21,7 @@ public class DocumentBuilderApp {
         System.out.println(booksDocumentBuilder.build(booksDocumentData));
 
         MovieRepository movieRepository = new MovieRepository();
-        MoviesDocumentBuilder moviesDocumentBuilder = new MoviesDocumentBuilder();
+        MoviesDocumentBuilder moviesDocumentBuilder = new MoviesDocumentBuilder(documentBuilder);
         MoviesMapper moviesMapper = new MoviesMapper();
 
         List<Movie> movies = movieRepository.movies();
