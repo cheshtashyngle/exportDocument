@@ -1,25 +1,22 @@
 package com.document.movies;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MoviesDocumentBuilder {
-    private static final String HEADING = "Movies Document";
 
-    public String build(List<Movie> movies) {
-        return (HEADING + "\n") +
-                getContent(movies);
+    public String build(MovieDocumentData moviesData) {
+        return (moviesData.getDocumentName() + "\n") +
+                getContent(moviesData);
     }
 
-    private String getContent(List<Movie> movies) {
-        return getRecordsTitlesString() +
-                getBookRecordsString(movies);
+    private String getContent(MovieDocumentData moviesData) {
+        return getRecordsTitlesString(moviesData.getRecordsTitles()) +
+                getBookRecordsString(moviesData.getRecords());
     }
 
-    private String getRecordsTitlesString() {
+    private String getRecordsTitlesString(List<String> moviesRecordTitles) {
         StringBuilder stringBuilder = new StringBuilder();
-        List<String> recordTitles = getRecordsTitles();
-        recordTitles.forEach(recordTitle -> {
+        moviesRecordTitles.forEach(recordTitle -> {
             stringBuilder.append(recordTitle).append("\t");
         });
         return stringBuilder.toString();
@@ -36,14 +33,5 @@ public class MoviesDocumentBuilder {
                 movie.director + "\t" +
                 movie.year + "\t" +
                 movie.movieRating + "\t";
-    }
-
-    private List<String> getRecordsTitles() {
-        List<String> recordTitles = new ArrayList<>();
-        recordTitles.add("Name");
-        recordTitles.add("Director");
-        recordTitles.add("Year");
-        recordTitles.add("Movie Rating");
-        return recordTitles;
     }
 }

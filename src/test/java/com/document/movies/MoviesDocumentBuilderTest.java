@@ -17,10 +17,11 @@ public class MoviesDocumentBuilderTest {
         List<Movie> movies = new ArrayList<>();
         Movie movie = new Movie("ABCD2", "2015", "PrabhuDeva", 8);
         movies.add(movie);
+        MovieDocumentData movieDocumentData = new MovieDocumentData(movies);
 
         String expectedDocument = "Movies Document\nName\tDirector\tYear\tMovie Rating\t\nABCD2\t2015\tPrabhuDeva\t8\t";
 
-        String actualDocument = moviesDocumentBuilder.build(movies);
+        String actualDocument = moviesDocumentBuilder.build(movieDocumentData);
 
         assertThat(actualDocument, is(expectedDocument));
     }
