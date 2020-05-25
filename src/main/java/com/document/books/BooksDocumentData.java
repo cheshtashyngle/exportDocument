@@ -1,9 +1,11 @@
 package com.document.books;
 
+import com.document.DocumentData;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class BooksDocumentData {
+public class BooksDocumentData implements DocumentData<Book> {
 
     private static final String BOOKS_DOCUMENT_NAME = "Books Document";
 
@@ -19,15 +21,18 @@ public class BooksDocumentData {
         this.books = books;
     }
 
-    String getDocumentName() {
+    @Override
+    public String getDocumentName() {
         return BOOKS_DOCUMENT_NAME;
     }
 
-    List<String> getRecordsTitles() {
+    @Override
+    public List<String> getRecordsTitles() {
         return BOOKS_RECORD_TITLES;
     }
 
-    List<Book> getRecords() {
+    @Override
+    public List<Book> getRecords() {
         return books;
     }
 }

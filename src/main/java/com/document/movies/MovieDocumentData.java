@@ -1,9 +1,11 @@
 package com.document.movies;
 
+import com.document.DocumentData;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieDocumentData {
+public class MovieDocumentData implements DocumentData<Movie> {
 
     private static final String MOVIES_DOCUMENT_NAME = "Movies Document";
 
@@ -20,15 +22,19 @@ public class MovieDocumentData {
         this.movies = movies;
     }
 
-    String getDocumentName() {
+
+    @Override
+    public String getDocumentName() {
         return MOVIES_DOCUMENT_NAME;
     }
 
-    List<String> getRecordsTitles() {
+    @Override
+    public List<String> getRecordsTitles() {
         return MOVIES_RECORD_TITLES;
     }
 
-    List<Movie> getRecords() {
+    @Override
+    public List<Movie> getRecords() {
         return movies;
     }
 }
