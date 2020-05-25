@@ -19,11 +19,13 @@ public class BooksDocumentBuilderTest {
         Book book2 = new Book("Complete Reference", "Java Author", "2001");
         books.add(book1);
         books.add(book2);
+        BooksDocumentData booksDocumentData = new BooksDocumentData(books);
 
         String expectedDocument = "Books Document\nName\tAuthor\tYearOfPublishing\t\n" +
                 "Head First With Java\tSerran\t1990\t\nComplete Reference\tJava Author\t2001\t";
 
-        String actualDocument = booksDocumentBuilder.build(books);
+
+        String actualDocument = booksDocumentBuilder.build(booksDocumentData);
 
         assertThat(actualDocument, is(expectedDocument));
     }
