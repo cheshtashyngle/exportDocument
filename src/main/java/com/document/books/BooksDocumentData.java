@@ -5,14 +5,14 @@ import com.document.DocumentData;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.document.books.BooksDocumentConstants.*;
+
 public class BooksDocumentData implements DocumentData<Book> {
 
-    private static final String BOOKS_DOCUMENT_NAME = "Books Document";
-
     private static final List<String> BOOKS_RECORD_TITLES = new ArrayList<String>() {{
-        add("Name");
-        add("Author");
-        add("YearOfPublishing");
+        add(TITLE_NAME);
+        add(TITLE_AUTHOR);
+        add(TITLE_YEAR_OF_PUBLISHING);
     }};
 
     private final List<Book> books;

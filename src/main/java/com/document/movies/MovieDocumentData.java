@@ -5,15 +5,15 @@ import com.document.DocumentData;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.document.movies.MoviesDocumentConstants.*;
+
 public class MovieDocumentData implements DocumentData<Movie> {
 
-    private static final String MOVIES_DOCUMENT_NAME = "Movies Document";
-
     private static final List<String> MOVIES_RECORD_TITLES = new ArrayList<String>() {{
-        add("Name");
-        add("Director");
-        add("Year");
-        add("Movie Rating");
+        add(TITLE_NAME);
+        add(TITLE_DIRECTOR);
+        add(TITLE_YEAR);
+        add(TITLE_MOVIE_RATING);
     }};
 
     private final List<Movie> movies;
