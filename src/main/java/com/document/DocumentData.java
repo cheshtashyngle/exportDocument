@@ -8,4 +8,6 @@ public interface DocumentData<T> {
     List<String> getRecordsTitles();
 
     List<T> getRecords();
+
+    List<DocumentRecordMap> getRecordsMap();
 }

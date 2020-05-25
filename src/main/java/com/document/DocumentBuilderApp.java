@@ -1,9 +1,6 @@
 package com.document;
 
-import com.document.books.Book;
-import com.document.books.BookRepository;
-import com.document.books.BooksDocumentBuilder;
-import com.document.books.BooksDocumentData;
+import com.document.books.*;
 import com.document.movies.Movie;
 import com.document.movies.MovieDocumentData;
 import com.document.movies.MovieRepository;
@@ -16,9 +13,11 @@ public class DocumentBuilderApp {
     public static void main(String[] args) {
         BookRepository bookRepository = new BookRepository();
         BooksDocumentBuilder booksDocumentBuilder = new BooksDocumentBuilder();
+        BooksMapper booksMapper = new BooksMapper();
 
         List<Book> books = bookRepository.books();
-        BooksDocumentData booksDocumentData = new BooksDocumentData(books);
+        List<DocumentRecordMap> booksMapList = booksMapper.getDocumentMapList(books);
+        BooksDocumentData booksDocumentData = new BooksDocumentData(books, booksMapList);
 
         System.out.println(booksDocumentBuilder.build(booksDocumentData));
 

@@ -1,6 +1,7 @@
 package com.document.books;
 
 import com.document.DocumentData;
+import com.document.DocumentRecordMap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +17,11 @@ public class BooksDocumentData implements DocumentData<Book> {
     }};
 
     private final List<Book> books;
+    private final List<DocumentRecordMap> booksMap;
 
-    public BooksDocumentData(List<Book> books) {
+    public BooksDocumentData(List<Book> books, List<DocumentRecordMap> booksMap) {
         this.books = books;
+        this.booksMap = booksMap;
     }
 
     @Override
@@ -34,5 +37,10 @@ public class BooksDocumentData implements DocumentData<Book> {
     @Override
     public List<Book> getRecords() {
         return books;
+    }
+
+    @Override
+    public List<DocumentRecordMap> getRecordsMap() {
+        return booksMap;
     }
 }

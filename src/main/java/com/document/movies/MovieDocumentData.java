@@ -1,6 +1,7 @@
 package com.document.movies;
 
 import com.document.DocumentData;
+import com.document.DocumentRecordMap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,5 +37,10 @@ public class MovieDocumentData implements DocumentData<Movie> {
     @Override
     public List<Movie> getRecords() {
         return movies;
+    }
+
+    @Override
+    public List<DocumentRecordMap> getRecordsMap() {
+        return null;
     }
 }

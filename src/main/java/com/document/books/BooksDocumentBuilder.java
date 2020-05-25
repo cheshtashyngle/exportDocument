@@ -1,6 +1,7 @@
 package com.document.books;
 
 import com.document.DocumentData;
+import com.document.DocumentRecordMap;
 
 import java.util.List;
 
@@ -12,8 +13,9 @@ public class BooksDocumentBuilder {
     }
 
     private String getContent(DocumentData<Book> data) {
-        return getRecordsTitlesString(data.getRecordsTitles()) +
-                getRecordsString(data.getRecords());
+        List<String> recordTitles = data.getRecordsTitles();
+        return getRecordsTitlesString(recordTitles) +
+                getRecordsString(recordTitles, data.getRecordsMap());
     }
 
     private String getRecordsTitlesString(List<String> recordTitles) {
@@ -22,15 +24,15 @@ public class BooksDocumentBuilder {
         return stringBuilder.toString();
     }
 
-    private String getRecordsString(List<Book> items) {
+    private String getRecordsString(List<String> recordTitles, List<DocumentRecordMap> recordMapList) {
         StringBuilder stringBuilder = new StringBuilder();
-        items.forEach(item -> stringBuilder.append("\n").append(getBookRecord(item)));
+        recordMapList.forEach(recordMap -> stringBuilder.append("\n").append(getRecordString(recordTitles, recordMap)));
         return stringBuilder.toString();
     }
 
-    private String getBookRecord(Book book) {
-        return book.name + "\t" +
-                book.author + "\t" +
-                book.yearOfPublishing + "\t";
+    private String getRecordString(List<String> recordTitles, DocumentRecordMap recordMap) {
+        StringBuilder stringBuilder = new StringBuilder();
+        recordTitles.forEach(recordTitle -> stringBuilder.append(recordMap.get(recordTitle)).append("\t"));
+        return stringBuilder.toString();
     }
 }
