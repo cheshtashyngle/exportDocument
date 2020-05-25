@@ -1,30 +1,30 @@
 package com.document.books;
 
+import com.document.DocumentData;
+
 import java.util.List;
 
 public class BooksDocumentBuilder {
 
-    public String build(BooksDocumentData booksData) {
-        return (booksData.getDocumentName() + "\n") +
-                getContent(booksData);
+    public String build(DocumentData<Book> data) {
+        return (data.getDocumentName() + "\n") +
+                getContent(data);
     }
 
-    private String getContent(BooksDocumentData booksData) {
-        return getRecordsTitlesString(booksData.getRecordsTitles()) +
-                getBookRecordsString(booksData.getRecords());
+    private String getContent(DocumentData<Book> data) {
+        return getRecordsTitlesString(data.getRecordsTitles()) +
+                getRecordsString(data.getRecords());
     }
 
-    private String getRecordsTitlesString(List<String> bookRecordTitles) {
+    private String getRecordsTitlesString(List<String> recordTitles) {
         StringBuilder stringBuilder = new StringBuilder();
-        bookRecordTitles.forEach(recordTitle -> {
-            stringBuilder.append(recordTitle).append("\t");
-        });
+        recordTitles.forEach(recordTitle -> stringBuilder.append(recordTitle).append("\t"));
         return stringBuilder.toString();
     }
 
-    private String getBookRecordsString(List<Book> books) {
+    private String getRecordsString(List<Book> items) {
         StringBuilder stringBuilder = new StringBuilder();
-        books.forEach(book -> stringBuilder.append("\n").append(getBookRecord(book)));
+        items.forEach(item -> stringBuilder.append("\n").append(getBookRecord(item)));
         return stringBuilder.toString();
     }
 

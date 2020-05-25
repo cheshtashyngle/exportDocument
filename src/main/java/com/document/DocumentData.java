@@ -1,7 +1,5 @@
 package com.document;
 
-import com.document.books.Book;
-
 import java.util.List;
 
 public interface DocumentData<T> {

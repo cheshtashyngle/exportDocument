@@ -1,34 +1,36 @@
 package com.document.movies;
 
+import com.document.DocumentData;
+
 import java.util.List;
 
 public class MoviesDocumentBuilder {
 
-    public String build(MovieDocumentData moviesData) {
-        return (moviesData.getDocumentName() + "\n") +
-                getContent(moviesData);
+    public String build(DocumentData<Movie> data) {
+        return (data.getDocumentName() + "\n") +
+                getContent(data);
     }
 
-    private String getContent(MovieDocumentData moviesData) {
-        return getRecordsTitlesString(moviesData.getRecordsTitles()) +
-                getBookRecordsString(moviesData.getRecords());
+    private String getContent(DocumentData<Movie> data) {
+        return getRecordsTitlesString(data.getRecordsTitles()) +
+                getRecordsString(data.getRecords());
     }
 
-    private String getRecordsTitlesString(List<String> moviesRecordTitles) {
+    private String getRecordsTitlesString(List<String> recordTitles) {
         StringBuilder stringBuilder = new StringBuilder();
-        moviesRecordTitles.forEach(recordTitle -> {
+        recordTitles.forEach(recordTitle -> {
             stringBuilder.append(recordTitle).append("\t");
         });
         return stringBuilder.toString();
     }
 
-    private String getBookRecordsString(List<Movie> movies) {
+    private String getRecordsString(List<Movie> movies) {
         StringBuilder stringBuilder = new StringBuilder();
-        movies.forEach(movie -> stringBuilder.append("\n").append(getBookRecord(movie)));
+        movies.forEach(movie -> stringBuilder.append("\n").append(getMovieRecord(movie)));
         return stringBuilder.toString();
     }
 
-    private String getBookRecord(Movie movie) {
+    private String getMovieRecord(Movie movie) {
         return movie.name + "\t" +
                 movie.director + "\t" +
                 movie.year + "\t" +
