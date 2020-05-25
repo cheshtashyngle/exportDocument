@@ -1,11 +1,15 @@
 package com.document;
 
-import com.document.DocumentRecordMap;
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 public interface RecordsMapper<RecordType> {
-    List<DocumentRecordMap> getDocumentMapList(List<RecordType> records);
 
-    DocumentRecordMap getMap(RecordType record);
+    default List<RecordMap> getDocumentMapList(List<RecordType> records) {
+        return records.stream()
+                .map(this::getMap)
+                .collect(Collectors.toList());
+    }
+
+    RecordMap getMap(RecordType record);
 }

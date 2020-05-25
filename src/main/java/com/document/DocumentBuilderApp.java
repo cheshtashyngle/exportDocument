@@ -1,10 +1,7 @@
 package com.document;
 
 import com.document.books.*;
-import com.document.movies.Movie;
-import com.document.movies.MovieDocumentData;
-import com.document.movies.MovieRepository;
-import com.document.movies.MoviesDocumentBuilder;
+import com.document.movies.*;
 
 import java.util.List;
 
@@ -16,16 +13,18 @@ public class DocumentBuilderApp {
         BooksMapper booksMapper = new BooksMapper();
 
         List<Book> books = bookRepository.books();
-        List<DocumentRecordMap> booksMapList = booksMapper.getDocumentMapList(books);
-        BooksDocumentData booksDocumentData = new BooksDocumentData(books, booksMapList);
+        List<RecordMap> booksMapList = booksMapper.getDocumentMapList(books);
+        BooksDocumentData booksDocumentData = new BooksDocumentData(booksMapList);
 
         System.out.println(booksDocumentBuilder.build(booksDocumentData));
 
         MovieRepository movieRepository = new MovieRepository();
         MoviesDocumentBuilder moviesDocumentBuilder = new MoviesDocumentBuilder();
+        MoviesMapper moviesMapper = new MoviesMapper();
 
         List<Movie> movies = movieRepository.movies();
-        MovieDocumentData movieDocumentData = new MovieDocumentData(movies);
+        List<RecordMap> moviesMapList = moviesMapper.getDocumentMapList(movies);
+        MovieDocumentData movieDocumentData = new MovieDocumentData(moviesMapList);
 
         System.out.println(moviesDocumentBuilder.build(movieDocumentData));
     }

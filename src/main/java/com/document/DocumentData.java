@@ -2,12 +2,10 @@ package com.document;
 
 import java.util.List;
 
-public interface DocumentData<RecordType> {
+public interface DocumentData {
     String getDocumentName();
 
     List<String> getRecordsTitles();
 
-    List<RecordType> getRecords();
-
-    List<DocumentRecordMap> getRecordsMap();
+    List<RecordMap> getRecordsMap();
 }

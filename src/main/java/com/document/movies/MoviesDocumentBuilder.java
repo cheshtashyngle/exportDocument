@@ -1,39 +1,38 @@
 package com.document.movies;
 
 import com.document.DocumentData;
+import com.document.RecordMap;
 
 import java.util.List;
 
 public class MoviesDocumentBuilder {
 
-    public String build(DocumentData<Movie> data) {
+    public String build(DocumentData data) {
         return (data.getDocumentName() + "\n") +
                 getContent(data);
     }
 
-    private String getContent(DocumentData<Movie> data) {
-        return getRecordsTitlesString(data.getRecordsTitles()) +
-                getRecordsString(data.getRecords());
+    private String getContent(DocumentData data) {
+        List<String> recordTitles = data.getRecordsTitles();
+        return getRecordsTitlesString(recordTitles) +
+                getRecordsString(recordTitles, data.getRecordsMap());
     }
 
     private String getRecordsTitlesString(List<String> recordTitles) {
         StringBuilder stringBuilder = new StringBuilder();
-        recordTitles.forEach(recordTitle -> {
-            stringBuilder.append(recordTitle).append("\t");
-        });
+        recordTitles.forEach(recordTitle -> stringBuilder.append(recordTitle).append("\t"));
         return stringBuilder.toString();
     }
 
-    private String getRecordsString(List<Movie> movies) {
+    private String getRecordsString(List<String> recordTitles, List<RecordMap> recordMapList) {
         StringBuilder stringBuilder = new StringBuilder();
-        movies.forEach(movie -> stringBuilder.append("\n").append(getMovieRecord(movie)));
+        recordMapList.forEach(recordMap -> stringBuilder.append("\n").append(getRecordString(recordTitles, recordMap)));
         return stringBuilder.toString();
     }
 
-    private String getMovieRecord(Movie movie) {
-        return movie.name + "\t" +
-                movie.director + "\t" +
-                movie.year + "\t" +
-                movie.movieRating + "\t";
+    private String getRecordString(List<String> recordTitles, RecordMap recordMap) {
+        StringBuilder stringBuilder = new StringBuilder();
+        recordTitles.forEach(recordTitle -> stringBuilder.append(recordMap.get(recordTitle)).append("\t"));
+        return stringBuilder.toString();
     }
 }

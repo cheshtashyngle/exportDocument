@@ -1,14 +1,14 @@
 package com.document.movies;
 
 import com.document.DocumentData;
-import com.document.DocumentRecordMap;
+import com.document.RecordMap;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.document.movies.MoviesDocumentConstants.*;
 
-public class MovieDocumentData implements DocumentData<Movie> {
+public class MovieDocumentData implements DocumentData {
 
     private static final List<String> MOVIES_RECORD_TITLES = new ArrayList<String>() {{
         add(TITLE_NAME);
@@ -17,12 +17,11 @@ public class MovieDocumentData implements DocumentData<Movie> {
         add(TITLE_MOVIE_RATING);
     }};
 
-    private final List<Movie> movies;
+    private final List<RecordMap> moviesMap;
 
-    public MovieDocumentData(List<Movie> movies) {
-        this.movies = movies;
+    public MovieDocumentData(List<RecordMap> moviesMap) {
+        this.moviesMap = moviesMap;
     }
-
 
     @Override
     public String getDocumentName() {
@@ -34,13 +33,9 @@ public class MovieDocumentData implements DocumentData<Movie> {
         return MOVIES_RECORD_TITLES;
     }
 
-    @Override
-    public List<Movie> getRecords() {
-        return movies;
-    }
 
     @Override
-    public List<DocumentRecordMap> getRecordsMap() {
-        return null;
+    public List<RecordMap> getRecordsMap() {
+        return moviesMap;
     }
 }

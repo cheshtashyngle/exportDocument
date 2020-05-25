@@ -6,7 +6,7 @@ public class Movie {
     final String year;
     final int movieRating;
 
-    public Movie(String name, String director, String year, int movieRating) {
+    Movie(String name, String director, String year, int movieRating) {
         this.name = name;
         this.director = director;
         this.year = year;

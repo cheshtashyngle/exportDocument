@@ -20,7 +20,7 @@ public class BooksDocumentBuilderTest {
         books.add(book1);
         books.add(book2);
         BooksMapper booksMapper = new BooksMapper();
-        BooksDocumentData booksDocumentData = new BooksDocumentData(books, booksMapper.getDocumentMapList(books));
+        BooksDocumentData booksDocumentData = new BooksDocumentData(booksMapper.getDocumentMapList(books));
 
         String expectedDocument = "Books Document\nName\tAuthor\tYearOfPublishing\t\n" +
                 "Head First With Java\tSerran\t1990\t\nComplete Reference\tJava Author\t2001\t";

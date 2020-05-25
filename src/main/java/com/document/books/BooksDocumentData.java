@@ -1,14 +1,14 @@
 package com.document.books;
 
 import com.document.DocumentData;
-import com.document.DocumentRecordMap;
+import com.document.RecordMap;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.document.books.BooksDocumentConstants.*;
 
-public class BooksDocumentData implements DocumentData<Book> {
+public class BooksDocumentData implements DocumentData {
 
     private static final List<String> BOOKS_RECORD_TITLES = new ArrayList<String>() {{
         add(TITLE_NAME);
@@ -16,11 +16,9 @@ public class BooksDocumentData implements DocumentData<Book> {
         add(TITLE_YEAR_OF_PUBLISHING);
     }};
 
-    private final List<Book> books;
-    private final List<DocumentRecordMap> booksMap;
+    private final List<RecordMap> booksMap;
 
-    public BooksDocumentData(List<Book> books, List<DocumentRecordMap> booksMap) {
-        this.books = books;
+    public BooksDocumentData(List<RecordMap> booksMap) {
         this.booksMap = booksMap;
     }
 
@@ -35,12 +33,7 @@ public class BooksDocumentData implements DocumentData<Book> {
     }
 
     @Override
-    public List<Book> getRecords() {
-        return books;
-    }
-
-    @Override
-    public List<DocumentRecordMap> getRecordsMap() {
+    public List<RecordMap> getRecordsMap() {
         return booksMap;
     }
 }
