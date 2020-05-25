@@ -3,6 +3,9 @@ package com.document;
 import com.document.books.Book;
 import com.document.books.BookRepository;
 import com.document.books.BooksDocumentBuilder;
+import com.document.movies.Movie;
+import com.document.movies.MovieRepository;
+import com.document.movies.MoviesDocumentBuilder;
 
 import java.util.List;
 
@@ -14,5 +17,11 @@ public class DocumentBuilderApp {
 
         List<Book> books = bookRepository.books();
         System.out.println(booksDocumentBuilder.build(books));
+
+        MovieRepository movieRepository = new MovieRepository();
+        MoviesDocumentBuilder moviesDocumentBuilder = new MoviesDocumentBuilder();
+
+        List<Movie> movies = movieRepository.movies();
+        System.out.println(moviesDocumentBuilder.build(movies));
     }
 }
