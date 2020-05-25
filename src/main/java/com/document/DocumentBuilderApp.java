@@ -11,23 +11,23 @@ public class DocumentBuilderApp {
         DocumentBuilder documentBuilder = new DocumentBuilder();
 
         BookRepository bookRepository = new BookRepository();
-        BooksDocumentBuilder booksDocumentBuilder = new BooksDocumentBuilder(documentBuilder);
+        BooksDocumentService booksDocumentService = new BooksDocumentService(documentBuilder);
         BooksMapper booksMapper = new BooksMapper();
 
         List<Book> books = bookRepository.books();
         List<RecordMap> booksMapList = booksMapper.getDocumentMapList(books);
         BooksDocumentData booksDocumentData = new BooksDocumentData(booksMapList);
 
-        System.out.println(booksDocumentBuilder.build(booksDocumentData));
+        System.out.println(booksDocumentService.build(booksDocumentData));
 
         MovieRepository movieRepository = new MovieRepository();
-        MoviesDocumentBuilder moviesDocumentBuilder = new MoviesDocumentBuilder(documentBuilder);
+        MoviesDocumentService moviesDocumentService = new MoviesDocumentService(documentBuilder);
         MoviesMapper moviesMapper = new MoviesMapper();
 
         List<Movie> movies = movieRepository.movies();
         List<RecordMap> moviesMapList = moviesMapper.getDocumentMapList(movies);
         MovieDocumentData movieDocumentData = new MovieDocumentData(moviesMapList);
 
-        System.out.println(moviesDocumentBuilder.build(movieDocumentData));
+        System.out.println(moviesDocumentService.build(movieDocumentData));
     }
 }

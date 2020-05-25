@@ -9,10 +9,10 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-public class MoviesDocumentBuilderTest {
+public class MoviesDocumentServiceTest {
 
     private final DocumentBuilder documentBuilder = new DocumentBuilder();
-    private final MoviesDocumentBuilder moviesDocumentBuilder = new MoviesDocumentBuilder(documentBuilder);
+    private final MoviesDocumentService moviesDocumentService = new MoviesDocumentService(documentBuilder);
 
     @Test
     public void shouldBuildDocument() {
@@ -24,7 +24,7 @@ public class MoviesDocumentBuilderTest {
 
         String expectedDocument = "Movies Document\nName\tDirector\tYear\tMovie Rating\t\nABCD2\t2015\tPrabhuDeva\t8\t";
 
-        String actualDocument = moviesDocumentBuilder.build(movieDocumentData);
+        String actualDocument = moviesDocumentService.build(movieDocumentData);
 
         assertThat(actualDocument, is(expectedDocument));
     }

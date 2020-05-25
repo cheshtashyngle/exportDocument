@@ -1,13 +1,13 @@
-package com.document.movies;
+package com.document.books;
 
 import com.document.DocumentBuilder;
 import com.document.DocumentData;
 
-public class MoviesDocumentBuilder {
+public class BooksDocumentService {
 
     private final DocumentBuilder documentBuilder;
 
-    public MoviesDocumentBuilder(DocumentBuilder documentBuilder) {
+    public BooksDocumentService(DocumentBuilder documentBuilder) {
         this.documentBuilder = documentBuilder;
     }
 

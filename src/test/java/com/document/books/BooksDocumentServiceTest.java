@@ -9,10 +9,10 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class BooksDocumentBuilderTest {
+public class BooksDocumentServiceTest {
 
     private final DocumentBuilder documentBuilder = new DocumentBuilder();
-    private final BooksDocumentBuilder booksDocumentBuilder = new BooksDocumentBuilder(documentBuilder);
+    private final BooksDocumentService booksDocumentService = new BooksDocumentService(documentBuilder);
 
     @Test
     public void shouldBuildDocument() {
@@ -28,7 +28,7 @@ public class BooksDocumentBuilderTest {
                 "Head First With Java\tSerran\t1990\t\nComplete Reference\tJava Author\t2001\t";
 
 
-        String actualDocument = booksDocumentBuilder.build(booksDocumentData);
+        String actualDocument = booksDocumentService.build(booksDocumentData);
 
         assertThat(actualDocument, is(expectedDocument));
     }
