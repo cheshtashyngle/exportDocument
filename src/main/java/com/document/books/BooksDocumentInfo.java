@@ -3,7 +3,7 @@ package com.document.books;
 import com.document.DocumentDataMapper;
 import com.document.RecordsRepository;
 
-public class BooksDocumentInfo {
+public class BooksDocumentInfo implements DocumentInfo<Book> {
 
     private final BookRepository bookRepository;
     private final BooksDocumentDataMapper booksDocumentDataMapper;
@@ -13,11 +13,13 @@ public class BooksDocumentInfo {
         this.booksDocumentDataMapper = booksDocumentDataMapper;
     }
 
-    RecordsRepository<Book> getRepository() {
+    @Override
+    public RecordsRepository<Book> getRepository() {
         return bookRepository;
     }
 
-    DocumentDataMapper<Book> getDocumentDataMapper() {
+    @Override
+    public DocumentDataMapper<Book> getDocumentDataMapper() {
         return booksDocumentDataMapper;
     }
 }
