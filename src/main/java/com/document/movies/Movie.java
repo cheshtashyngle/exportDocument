@@ -1,6 +1,6 @@
 package com.document.movies;
 
-public class Movie {
+class Movie {
     final String name;
     final String director;
     final String year;

@@ -1,6 +1,6 @@
 package com.document.books;
 
-public class Book {
+class Book {
 
     final String name;
     final String author;
