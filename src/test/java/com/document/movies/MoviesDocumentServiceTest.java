@@ -1,7 +1,6 @@
 package com.document.movies;
 
 import com.document.DocumentBuilder;
-import com.document.DocumentService;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;

@@ -1,18 +1,19 @@
 package com.document;
 
+import com.document.books.DocumentInfo;
+
 import java.util.List;
 
-public class DocumentService<RecordType> {
+public abstract class AbstractSingleDocumentService<RecordType> {
 
     private final RecordsRepository<RecordType> recordsRepository;
     private final DocumentDataMapper<RecordType> documentDataMapper;
     private final DocumentBuilder documentBuilder;
 
-    public DocumentService(RecordsRepository<RecordType> recordsRepository,
-                                DocumentDataMapper<RecordType> documentDataMapper,
-                                DocumentBuilder documentBuilder) {
-        this.recordsRepository = recordsRepository;
-        this.documentDataMapper = documentDataMapper;
+    public AbstractSingleDocumentService(DocumentInfo<RecordType> documentInfo,
+                                         DocumentBuilder documentBuilder) {
+        this.recordsRepository = documentInfo.getRepository();
+        this.documentDataMapper = documentInfo.getDocumentDataMapper();
         this.documentBuilder = documentBuilder;
     }
 

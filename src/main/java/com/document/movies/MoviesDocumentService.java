@@ -1,18 +1,11 @@
 package com.document.movies;
 
 import com.document.DocumentBuilder;
-import com.document.DocumentService;
+import com.document.AbstractSingleDocumentService;
 
-public class MoviesDocumentService {
+public class MoviesDocumentService extends AbstractSingleDocumentService<Movie> {
 
-    private final DocumentService<Movie> movieDocumentService;
-
-    public MoviesDocumentService(MoviesDocumentInfo moviesDocumentInfo, DocumentBuilder documentBuilder) {
-        this.movieDocumentService = new DocumentService<>(moviesDocumentInfo.getRepository(),
-                moviesDocumentInfo.getDocumentDataMapper(), documentBuilder);
-    }
-
-    public String build() {
-        return movieDocumentService.build();
+    public MoviesDocumentService(MoviesDocumentInfo documentInfo, DocumentBuilder documentBuilder) {
+        super(documentInfo, documentBuilder);
     }
 }
