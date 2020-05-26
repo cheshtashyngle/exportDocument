@@ -3,26 +3,27 @@ package com.document.books;
 import com.document.DocumentBuilder;
 import com.document.DocumentData;
 import com.document.DocumentDataMapper;
+import com.document.RecordsRepository;
 
 import java.util.List;
 
 public class BooksDocumentService {
 
-    private final BookRepository bookRepository;
-    private final DocumentDataMapper<Book> booksMapper;
+    private final RecordsRepository<Book> recordsRepository;
+    private final DocumentDataMapper<Book> documentDataMapper;
     private final DocumentBuilder documentBuilder;
 
-    public BooksDocumentService(BookRepository bookRepository,
-                                DocumentDataMapper<Book> booksMapper,
+    public BooksDocumentService(RecordsRepository<Book> recordsRepository,
+                                DocumentDataMapper<Book> documentDataMapper,
                                 DocumentBuilder documentBuilder) {
-        this.bookRepository = bookRepository;
-        this.booksMapper = booksMapper;
+        this.recordsRepository = recordsRepository;
+        this.documentDataMapper = documentDataMapper;
         this.documentBuilder = documentBuilder;
     }
 
     public String build() {
-        List<Book> books = bookRepository.getRecords();
-        DocumentData documentData = booksMapper.getDocumentData(books);
+        List<Book> records = recordsRepository.getRecords();
+        DocumentData documentData = documentDataMapper.getDocumentData(records);
         return documentBuilder.build(documentData);
     }
 }
