@@ -3,8 +3,6 @@ package com.document;
 import com.document.books.*;
 import com.document.movies.*;
 
-import java.util.List;
-
 public class DocumentBuilderApp {
 
     public static void main(String[] args) {
@@ -18,13 +16,10 @@ public class DocumentBuilderApp {
         System.out.println(booksDocumentService.build());
 
         MovieRepository movieRepository = new MovieRepository();
-        MoviesDocumentService moviesDocumentService = new MoviesDocumentService(documentBuilder);
         MoviesMapper moviesMapper = new MoviesMapper();
 
-        List<Movie> movies = movieRepository.movies();
-        List<RecordMap> moviesMapList = moviesMapper.getDocumentMapList(movies);
-        MovieDocumentData movieDocumentData = new MovieDocumentData(moviesMapList);
+        MoviesDocumentService moviesDocumentService = new MoviesDocumentService(movieRepository, moviesMapper, documentBuilder);
 
-        System.out.println(moviesDocumentService.build(movieDocumentData));
+        System.out.println(moviesDocumentService.build());
     }
 }

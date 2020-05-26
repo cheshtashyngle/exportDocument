@@ -19,7 +19,7 @@ public class BooksDocumentService {
 
     public String build() {
         List<Book> books = bookRepository.books();
-        List<RecordMap> bookMapList = booksMapper.getDocumentMapList(books);
+        List<RecordMap> bookMapList = booksMapper.getRecordMapList(books);
         BooksDocumentData booksDocumentData = new BooksDocumentData(bookMapList);
         return documentBuilder.build(booksDocumentData);
     }
