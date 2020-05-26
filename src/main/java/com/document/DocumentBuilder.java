@@ -4,7 +4,7 @@ import java.util.List;
 
 public class DocumentBuilder {
 
-    public String build(DocumentData data) {
+    String build(DocumentData data) {
         return (data.getDocumentName() + "\n") +
                 getContent(data);
     }

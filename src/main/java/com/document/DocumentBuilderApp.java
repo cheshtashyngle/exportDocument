@@ -11,9 +11,9 @@ public class DocumentBuilderApp {
         BookRepository bookRepository = new BookRepository();
         BooksDocumentDataMapper booksDocumentDataMapper = new BooksDocumentDataMapper();
 
-        DocumentService<Book> bookDocumentService = new DocumentService<>(bookRepository, booksDocumentDataMapper, documentBuilder);
+        BooksDocumentInfo booksDocumentInfo = new BooksDocumentInfo(bookRepository, booksDocumentDataMapper);
 
-        BooksDocumentService booksDocumentService = new BooksDocumentService(bookDocumentService);
+        BooksDocumentService booksDocumentService = new BooksDocumentService(booksDocumentInfo, documentBuilder);
 
         System.out.println(booksDocumentService.build());
 
