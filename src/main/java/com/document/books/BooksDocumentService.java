@@ -2,16 +2,17 @@ package com.document.books;
 
 import com.document.DocumentBuilder;
 import com.document.RecordMap;
+import com.document.RecordsMapper;
 
 import java.util.List;
 
 public class BooksDocumentService {
 
     private final BookRepository bookRepository;
-    private final BooksMapper booksMapper;
+    private final RecordsMapper<Book> booksMapper;
     private final DocumentBuilder documentBuilder;
 
-    public BooksDocumentService(BookRepository bookRepository, BooksMapper booksMapper, DocumentBuilder documentBuilder) {
+    public BooksDocumentService(BookRepository bookRepository, RecordsMapper<Book> booksMapper, DocumentBuilder documentBuilder) {
         this.bookRepository = bookRepository;
         this.booksMapper = booksMapper;
         this.documentBuilder = documentBuilder;

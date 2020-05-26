@@ -1,6 +1,7 @@
 package com.document.books;
 
 import com.document.DocumentBuilder;
+import com.document.RecordsMapper;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -9,7 +10,7 @@ import static org.junit.Assert.assertThat;
 public class BooksDocumentServiceTest {
 
     private final BookRepository bookRepository = new BookRepository();
-    private final BooksMapper booksMapper = new BooksMapper();
+    private final RecordsMapper<Book> booksMapper = new BooksMapper();
     private final DocumentBuilder documentBuilder = new DocumentBuilder();
     private final BooksDocumentService booksDocumentService = new BooksDocumentService(bookRepository, booksMapper, documentBuilder);
 
