@@ -21,7 +21,7 @@ public class MoviesDocumentService {
     }
 
     public String build() {
-        List<Movie> movies = movieRepository.movies();
+        List<Movie> movies = movieRepository.getRecords();
         DocumentData documentData = moviesMapper.getDocumentData(movies);
         return documentBuilder.build(documentData);
     }

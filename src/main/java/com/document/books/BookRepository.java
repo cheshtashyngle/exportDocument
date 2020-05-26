@@ -1,11 +1,14 @@
 package com.document.books;
 
+import com.document.RecordsRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookRepository {
+public class BookRepository implements RecordsRepository<Book> {
 
-    public List<Book> books() {
+    @Override
+    public List<Book> getRecords() {
         List<Book> booksList = new ArrayList<>();
         Book book1 = new Book("Head First With Java", "Serran", "1990");
         Book book2 = new Book("Complete Reference", "Java Author", "2001");
