@@ -19,7 +19,7 @@ public class MovieDocumentData implements DocumentData {
 
     private final List<RecordMap> moviesMap;
 
-    public MovieDocumentData(List<RecordMap> moviesMap) {
+    MovieDocumentData(List<RecordMap> moviesMap) {
         this.moviesMap = moviesMap;
     }
 

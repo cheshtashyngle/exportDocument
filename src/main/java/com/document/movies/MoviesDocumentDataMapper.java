@@ -1,11 +1,19 @@
 package com.document.movies;
 
+import com.document.DocumentData;
 import com.document.RecordMap;
-import com.document.RecordsMapper;
+import com.document.DocumentDataMapper;
+
+import java.util.List;
 
 import static com.document.movies.MoviesDocumentConstants.*;
 
-public class MoviesMapper implements RecordsMapper<Movie> {
+public class MoviesDocumentDataMapper implements DocumentDataMapper<Movie> {
+
+    @Override
+    public DocumentData getDocumentData(List<Movie> records) {
+        return new MovieDocumentData(getRecordMapList(records));
+    }
 
     @Override
     public RecordMap getMap(Movie movie) {

@@ -18,7 +18,7 @@ public class BooksDocumentData implements DocumentData {
 
     private final List<RecordMap> booksMap;
 
-    public BooksDocumentData(List<RecordMap> booksMap) {
+    BooksDocumentData(List<RecordMap> booksMap) {
         this.booksMap = booksMap;
     }
 

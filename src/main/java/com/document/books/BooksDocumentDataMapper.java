@@ -1,14 +1,21 @@
 package com.document.books;
 
+import com.document.DocumentData;
 import com.document.RecordMap;
-import com.document.RecordsMapper;
+import com.document.DocumentDataMapper;
 
+import java.util.List;
 
 import static com.document.books.BooksDocumentConstants.TITLE_AUTHOR;
 import static com.document.books.BooksDocumentConstants.TITLE_NAME;
 import static com.document.books.BooksDocumentConstants.TITLE_YEAR_OF_PUBLISHING;
 
-public class BooksMapper implements RecordsMapper<Book> {
+public class BooksDocumentDataMapper implements DocumentDataMapper<Book> {
+
+    @Override
+    public DocumentData getDocumentData(List<Book> books) {
+        return new BooksDocumentData(getRecordMapList(books));
+    }
 
     @Override
     public RecordMap getMap(Book book) {
