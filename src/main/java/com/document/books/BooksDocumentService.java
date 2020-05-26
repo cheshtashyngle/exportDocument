@@ -1,9 +1,9 @@
 package com.document.books;
 
 import com.document.DocumentBuilder;
-import com.document.AbstractSingleDocumentService;
+import com.document.SingleDocumentService;
 
-public class BooksDocumentService extends AbstractSingleDocumentService<Book> {
+public class BooksDocumentService extends SingleDocumentService<Book> {
 
     public BooksDocumentService(BooksDocumentInfo documentInfo, DocumentBuilder documentBuilder) {
         super(documentInfo, documentBuilder);

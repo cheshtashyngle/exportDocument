@@ -1,9 +1,9 @@
 package com.document.movies;
 
 import com.document.DocumentBuilder;
-import com.document.AbstractSingleDocumentService;
+import com.document.SingleDocumentService;
 
-public class MoviesDocumentService extends AbstractSingleDocumentService<Movie> {
+public class MoviesDocumentService extends SingleDocumentService<Movie> {
 
     public MoviesDocumentService(MoviesDocumentInfo documentInfo, DocumentBuilder documentBuilder) {
         super(documentInfo, documentBuilder);

@@ -4,14 +4,14 @@ import com.document.books.DocumentInfo;
 
 import java.util.List;
 
-public abstract class AbstractSingleDocumentService<RecordType> {
+public abstract class SingleDocumentService<RecordType> {
 
     private final RecordsRepository<RecordType> recordsRepository;
     private final DocumentDataMapper<RecordType> documentDataMapper;
     private final DocumentBuilder documentBuilder;
 
-    public AbstractSingleDocumentService(DocumentInfo<RecordType> documentInfo,
-                                         DocumentBuilder documentBuilder) {
+    public SingleDocumentService(DocumentInfo<RecordType> documentInfo,
+                                 DocumentBuilder documentBuilder) {
         this.recordsRepository = documentInfo.getRepository();
         this.documentDataMapper = documentInfo.getDocumentDataMapper();
         this.documentBuilder = documentBuilder;
