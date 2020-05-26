@@ -1,21 +1,20 @@
 package com.document.movies;
 
 import com.document.DocumentBuilder;
-import com.document.DocumentDataMapper;
 import com.document.DocumentService;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class MoviesDocumentServiceTest {
 
     private final MovieRepository movieRepository = new MovieRepository();
-    private final DocumentDataMapper<Movie> moviesMapper = new MoviesDocumentDataMapper();
+    private final MoviesDocumentDataMapper moviesMapper = new MoviesDocumentDataMapper();
     private final DocumentBuilder documentBuilder = new DocumentBuilder();
-    private final DocumentService<Movie> documentService = new DocumentService<>(movieRepository,
-            moviesMapper, documentBuilder);
-    private final MoviesDocumentService moviesDocumentService = new MoviesDocumentService(documentService);
+    private final MoviesDocumentInfo moviesDocumentInfo = new MoviesDocumentInfo(movieRepository, moviesMapper);
+    private final MoviesDocumentService moviesDocumentService = new MoviesDocumentService(moviesDocumentInfo,
+            documentBuilder);
 
     @Test
     public void shouldBuildDocument() {

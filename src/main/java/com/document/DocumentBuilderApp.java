@@ -20,9 +20,9 @@ public class DocumentBuilderApp {
         MovieRepository movieRepository = new MovieRepository();
         MoviesDocumentDataMapper moviesDocumentDataMapper = new MoviesDocumentDataMapper();
 
-        DocumentService<Movie> movieDocumentService = new DocumentService<>(movieRepository, moviesDocumentDataMapper, documentBuilder);
+        MoviesDocumentInfo moviesDocumentInfo = new MoviesDocumentInfo(movieRepository, moviesDocumentDataMapper);
 
-        MoviesDocumentService moviesDocumentService = new MoviesDocumentService(movieDocumentService);
+        MoviesDocumentService moviesDocumentService = new MoviesDocumentService(moviesDocumentInfo, documentBuilder);
 
         System.out.println(moviesDocumentService.build());
     }
