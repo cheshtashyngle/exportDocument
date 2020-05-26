@@ -11,14 +11,18 @@ public class DocumentBuilderApp {
         BookRepository bookRepository = new BookRepository();
         BooksDocumentDataMapper booksDocumentDataMapper = new BooksDocumentDataMapper();
 
-        BooksDocumentService booksDocumentService = new BooksDocumentService(bookRepository, booksDocumentDataMapper, documentBuilder);
+        DocumentService<Book> bookDocumentService = new DocumentService<>(bookRepository, booksDocumentDataMapper, documentBuilder);
+
+        BooksDocumentService booksDocumentService = new BooksDocumentService(bookDocumentService);
 
         System.out.println(booksDocumentService.build());
 
         MovieRepository movieRepository = new MovieRepository();
         MoviesDocumentDataMapper moviesDocumentDataMapper = new MoviesDocumentDataMapper();
 
-        MoviesDocumentService moviesDocumentService = new MoviesDocumentService(movieRepository, moviesDocumentDataMapper, documentBuilder);
+        DocumentService<Movie> movieDocumentService = new DocumentService<>(movieRepository, moviesDocumentDataMapper, documentBuilder);
+
+        MoviesDocumentService moviesDocumentService = new MoviesDocumentService(movieDocumentService);
 
         System.out.println(moviesDocumentService.build());
     }

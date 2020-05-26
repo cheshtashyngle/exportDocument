@@ -2,6 +2,7 @@ package com.document.books;
 
 import com.document.DocumentBuilder;
 import com.document.DocumentDataMapper;
+import com.document.DocumentService;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -12,7 +13,9 @@ public class BooksDocumentServiceTest {
     private final BookRepository bookRepository = new BookRepository();
     private final DocumentDataMapper<Book> booksMapper = new BooksDocumentDataMapper();
     private final DocumentBuilder documentBuilder = new DocumentBuilder();
-    private final BooksDocumentService booksDocumentService = new BooksDocumentService(bookRepository, booksMapper, documentBuilder);
+    private final DocumentService<Book> documentService = new DocumentService<>(bookRepository,
+            booksMapper, documentBuilder);
+    private final BooksDocumentService booksDocumentService = new BooksDocumentService(documentService);
 
     @Test
     public void shouldBuildDocument() {
