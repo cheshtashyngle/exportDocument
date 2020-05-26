@@ -3,32 +3,22 @@ package com.document.books;
 import com.document.DocumentBuilder;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class BooksDocumentServiceTest {
 
+    private final BookRepository bookRepository = new BookRepository();
+    private final BooksMapper booksMapper = new BooksMapper();
     private final DocumentBuilder documentBuilder = new DocumentBuilder();
-    private final BooksDocumentService booksDocumentService = new BooksDocumentService(documentBuilder);
+    private final BooksDocumentService booksDocumentService = new BooksDocumentService(bookRepository, booksMapper, documentBuilder);
 
     @Test
     public void shouldBuildDocument() {
-        List<Book> books = new ArrayList<>();
-        Book book1 = new Book("Head First With Java", "Serran", "1990");
-        Book book2 = new Book("Complete Reference", "Java Author", "2001");
-        books.add(book1);
-        books.add(book2);
-        BooksMapper booksMapper = new BooksMapper();
-        BooksDocumentData booksDocumentData = new BooksDocumentData(booksMapper.getDocumentMapList(books));
-
         String expectedDocument = "Books Document\nName\tAuthor\tYearOfPublishing\t\n" +
                 "Head First With Java\tSerran\t1990\t\nComplete Reference\tJava Author\t2001\t";
 
-
-        String actualDocument = booksDocumentService.build(booksDocumentData);
+        String actualDocument = booksDocumentService.build();
 
         assertThat(actualDocument, is(expectedDocument));
     }
