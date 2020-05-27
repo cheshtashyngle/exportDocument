@@ -33,7 +33,7 @@ public class BooksDocumentData implements DocumentData {
     }
 
     @Override
-    public List<RecordMap> getRecordsMap() {
+    public List<RecordMap> getRecordMapsList() {
         return booksMap;
     }
 }

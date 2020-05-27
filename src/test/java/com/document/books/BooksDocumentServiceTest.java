@@ -1,7 +1,7 @@
 package com.document.books;
 
 import com.document.DocumentBuilder;
-import com.document.StringDocumentBuilder;
+import com.document.stringformat.StringDocumentBuilder;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;

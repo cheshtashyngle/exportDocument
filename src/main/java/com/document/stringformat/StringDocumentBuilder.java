@@ -1,4 +1,8 @@
-package com.document;
+package com.document.stringformat;
+
+import com.document.DocumentBuilder;
+import com.document.DocumentData;
+import com.document.RecordMap;
 
 import java.util.List;
 
@@ -13,7 +17,7 @@ public class StringDocumentBuilder implements DocumentBuilder {
     private String getContent(DocumentData data) {
         List<String> recordTitles = data.getRecordsTitles();
         return getRecordsTitlesString(recordTitles) +
-                getRecordsString(recordTitles, data.getRecordsMap());
+                getRecordsString(recordTitles, data.getRecordMapsList());
     }
 
     private String getRecordsTitlesString(List<String> recordTitles) {

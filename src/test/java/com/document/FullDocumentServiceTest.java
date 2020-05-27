@@ -8,6 +8,7 @@ import com.document.movies.MovieRepository;
 import com.document.movies.MoviesDocumentDataMapper;
 import com.document.movies.MoviesDocumentInfo;
 import com.document.movies.MoviesDocumentService;
+import com.document.stringformat.StringDocumentBuilder;
 import org.junit.Before;
 import org.junit.Test;
 

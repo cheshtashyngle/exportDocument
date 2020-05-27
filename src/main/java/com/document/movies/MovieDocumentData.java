@@ -35,7 +35,7 @@ public class MovieDocumentData implements DocumentData {
 
 
     @Override
-    public List<RecordMap> getRecordsMap() {
+    public List<RecordMap> getRecordMapsList() {
         return moviesMap;
     }
 }

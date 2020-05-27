@@ -7,5 +7,5 @@ public interface DocumentData {
 
     List<String> getRecordsTitles();
 
-    List<RecordMap> getRecordsMap();
+    List<RecordMap> getRecordMapsList();
 }
