@@ -26,7 +26,7 @@ public class ExcelDocumentBuilder implements DocumentBuilder {
         List<ExcelRow> dataForExcel = getDataInRowsFormat(data);
         try {
             excelWriter.write(DOCUMENT_PATH, data.getDocumentName(), dataForExcel);
-        } catch (FileNotFoundException exception) {
+        } catch (Exception exception) {
             return exception.getLocalizedMessage();
         }
         return dataForExcel.toString();
