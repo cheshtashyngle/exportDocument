@@ -1,6 +1,7 @@
 package com.document.books;
 
 import com.document.DocumentBuilder;
+import com.document.StringDocumentBuilder;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -10,7 +11,7 @@ public class BooksDocumentServiceTest {
 
     private final BookRepository bookRepository = new BookRepository();
     private final BooksDocumentDataMapper booksMapper = new BooksDocumentDataMapper();
-    private final DocumentBuilder documentBuilder = new DocumentBuilder();
+    private final DocumentBuilder documentBuilder = new StringDocumentBuilder();
     private final BooksDocumentInfo booksDocumentInfo = new BooksDocumentInfo(bookRepository, booksMapper);
     private final BooksDocumentService booksDocumentService = new BooksDocumentService(booksDocumentInfo,
             documentBuilder);

@@ -1,6 +1,7 @@
 package com.document.movies;
 
 import com.document.DocumentBuilder;
+import com.document.StringDocumentBuilder;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -10,7 +11,7 @@ public class MoviesDocumentServiceTest {
 
     private final MovieRepository movieRepository = new MovieRepository();
     private final MoviesDocumentDataMapper moviesMapper = new MoviesDocumentDataMapper();
-    private final DocumentBuilder documentBuilder = new DocumentBuilder();
+    private final DocumentBuilder documentBuilder = new StringDocumentBuilder();
     private final MoviesDocumentInfo moviesDocumentInfo = new MoviesDocumentInfo(movieRepository, moviesMapper);
     private final MoviesDocumentService moviesDocumentService = new MoviesDocumentService(moviesDocumentInfo,
             documentBuilder);

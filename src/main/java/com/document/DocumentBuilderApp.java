@@ -20,7 +20,7 @@ public class DocumentBuilderApp {
     }
 
     private static List<SingleDocumentService> getSingleDocumentServices() {
-        DocumentBuilder documentBuilder = getDocumentBuilder();
+        StringDocumentBuilder documentBuilder = getDocumentBuilder();
 
         BooksDocumentService booksDocumentService = getBooksDocumentService(documentBuilder);
         MoviesDocumentService moviesDocumentService = getMoviesDocumentService(documentBuilder);
@@ -31,11 +31,11 @@ public class DocumentBuilderApp {
         return documentServices;
     }
 
-    private static DocumentBuilder getDocumentBuilder() {
-        return new DocumentBuilder();
+    private static StringDocumentBuilder getDocumentBuilder() {
+        return new StringDocumentBuilder();
     }
 
-    private static BooksDocumentService getBooksDocumentService(DocumentBuilder documentBuilder) {
+    private static BooksDocumentService getBooksDocumentService(StringDocumentBuilder documentBuilder) {
         BookRepository bookRepository = new BookRepository();
         BooksDocumentDataMapper booksDocumentDataMapper = new BooksDocumentDataMapper();
         BooksDocumentInfo booksDocumentInfo = new BooksDocumentInfo(bookRepository, booksDocumentDataMapper);
@@ -43,7 +43,7 @@ public class DocumentBuilderApp {
         return new BooksDocumentService(booksDocumentInfo, documentBuilder);
     }
 
-    private static MoviesDocumentService getMoviesDocumentService(DocumentBuilder documentBuilder) {
+    private static MoviesDocumentService getMoviesDocumentService(StringDocumentBuilder documentBuilder) {
         MovieRepository movieRepository = new MovieRepository();
         MoviesDocumentDataMapper moviesDocumentDataMapper = new MoviesDocumentDataMapper();
 

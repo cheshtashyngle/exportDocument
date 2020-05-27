@@ -49,7 +49,7 @@ public class FullDocumentServiceTest {
     }
 
     private static DocumentBuilder getDocumentBuilder() {
-        return new DocumentBuilder();
+        return new StringDocumentBuilder();
     }
 
     private static BooksDocumentService getBooksDocumentService(DocumentBuilder documentBuilder) {
