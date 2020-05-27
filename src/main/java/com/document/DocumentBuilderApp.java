@@ -2,10 +2,7 @@ package com.document;
 
 import com.document.books.*;
 import com.document.excelFormat.ExcelDocumentBuilder;
-import com.document.excelFormat.poi.POICellBuilder;
-import com.document.excelFormat.poi.POIExcelWriter;
-import com.document.excelFormat.poi.POIRowBuilder;
-import com.document.excelFormat.poi.POISheetBuilder;
+import com.document.excelFormat.poi.*;
 import com.document.movies.*;
 import com.document.stringformat.StringDocumentBuilder;
 
@@ -43,7 +40,10 @@ public class DocumentBuilderApp {
         POICellBuilder cellBuilder = new POICellBuilder();
         POIRowBuilder rowBuilder = new POIRowBuilder(cellBuilder);
         POISheetBuilder sheetBuilder = new POISheetBuilder(rowBuilder);
-        POIExcelWriter excelWriter = new POIExcelWriter(sheetBuilder);
+
+        POICellStyleFactory cellStyleFactory = new POICellStyleFactory();
+
+        POIExcelWriter excelWriter = new POIExcelWriter(sheetBuilder, cellStyleFactory);
 
         return new ExcelDocumentBuilder(excelWriter);
     }
