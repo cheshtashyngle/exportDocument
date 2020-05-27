@@ -19,8 +19,8 @@ public class POIExcelWriter implements ExcelWriter {
     }
 
     @Override
-    public void write(String documentPath, String documentName, List<ExcelRow> data) throws IOException {
-        String excelFileNameWithPath = getExcelFileName(documentPath, documentName);
+    public void write(String documentName, List<ExcelRow> data) throws IOException {
+        String excelFileNameWithPath = getExcelFileName(documentName);
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet(documentName);
         sheetBuilder.build(sheet, data);
@@ -29,8 +29,8 @@ public class POIExcelWriter implements ExcelWriter {
         workbook.write(fileOutputStream);
     }
 
-    private String getExcelFileName(String documentPath, String documentName) {
-        return documentPath + "/" + documentName + ".xlsx";
+    private String getExcelFileName(String documentName) {
+        return documentName + ".xlsx";
     }
 
 

@@ -18,7 +18,7 @@ public class BooksDocumentServiceTest {
 
     @Test
     public void shouldBuildDocument() {
-        String expectedDocument = "Books Document\nName\tAuthor\tYearOfPublishing\t\n" +
+        String expectedDocument = "Books_Document\nName\tAuthor\tYearOfPublishing\t\n" +
                 "Head First With Java\tSerran\t1990\t\nComplete Reference\tJava Author\t2001\t";
 
         String actualDocument = booksDocumentService.build();

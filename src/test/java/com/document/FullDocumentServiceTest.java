@@ -30,7 +30,7 @@ public class FullDocumentServiceTest {
     @Test
     public void shouldBuildDocument() {
         String fullDocument = fullDocumentService.build();
-        String expectedDocument = "Books Document\nName\tAuthor\tYearOfPublishing\t\n" +
+        String expectedDocument = "Books_Document\nName\tAuthor\tYearOfPublishing\t\n" +
                 "Head First With Java\tSerran\t1990\t\nComplete Reference\tJava Author\t2001\t" +
                 "Movies Document\nName\tDirector\tYear\tMovie Rating\t\nABCD2\t2015\tPrabhuDeva\t8\t";
 

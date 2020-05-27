@@ -4,7 +4,6 @@ import com.document.DocumentBuilder;
 import com.document.DocumentData;
 import com.document.RecordMap;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,8 +11,6 @@ import java.util.stream.Collectors;
 import static com.document.DocumentDataStyle.*;
 
 public class ExcelDocumentBuilder implements DocumentBuilder {
-
-    private final static String DOCUMENT_PATH = "resources/documents";
 
     private final ExcelWriter excelWriter;
 
@@ -25,7 +22,7 @@ public class ExcelDocumentBuilder implements DocumentBuilder {
     public String build(DocumentData data) {
         List<ExcelRow> dataForExcel = getDataInRowsFormat(data);
         try {
-            excelWriter.write(DOCUMENT_PATH, data.getDocumentName(), dataForExcel);
+            excelWriter.write(data.getDocumentName(), dataForExcel);
         } catch (Exception exception) {
             return exception.getLocalizedMessage();
         }
@@ -40,7 +37,8 @@ public class ExcelDocumentBuilder implements DocumentBuilder {
     }
 
     private ExcelRow getTitlesRow(DocumentData data) {
-        return new ExcelRow(data.getRecordsTitles(), TITLE);
+        List<Object> titleRow = new ArrayList<>(data.getRecordsTitles());
+        return new ExcelRow(titleRow, TITLE);
     }
 
     private List<ExcelRow> getRecordRows(DocumentData data) {
