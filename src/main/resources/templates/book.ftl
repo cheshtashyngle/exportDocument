@@ -8,9 +8,10 @@
               bottomMargin="50" uuid="030574cb-2d4b-4281-8294-0f87619f0d8f">
     <parameter name="reportTitle" class="java.lang.String"/>
 
-    <field name="name" class="java.lang.String"/>
-    <field name="author" class="java.lang.String"/>
-    <field name="dateOfPublication" class="java.util.Date"/>
+    <#list columnDataList as columnData>
+    <field name= "${columnData.id}"  class= "${columnData.type.getName()}"/>
+    </#list>
+
     <title>
         <band height="70">
             <line>
@@ -28,12 +29,12 @@
     <pageHeader>
         <band height="20">
             <staticText>
-                <reportElement mode="Opaque" x="0" y="5" width="55" height="15" forecolor="#FFFFFF" backcolor="#333333" uuid="d0bda39f-a3d6-445f-9253-f156c802c4c2"/>
+                <reportElement mode="Opaque"  x="0" y="5" width="55" height="15" forecolor="#FFFFFF" backcolor="#333333" uuid="d0bda39f-a3d6-445f-9253-f156c802c4c2"/>
                 <textElement textAlignment="Center"/>
                 <text><![CDATA[NAME]]></text>
             </staticText>
             <staticText>
-                <reportElement mode="Opaque" x="55" y="5" width="205" height="15" forecolor="#FFFFFF" backcolor="#333333" uuid="402baff8-c1df-4c1b-bfcb-0f21529cbf04"/>
+                <reportElement mode="Opaque"  x="55" y="5" width="205" height="15" forecolor="#FFFFFF" backcolor="#333333" uuid="402baff8-c1df-4c1b-bfcb-0f21529cbf04"/>
                 <text><![CDATA[AUTHOR]]></text>
             </staticText>
             <staticText>
@@ -44,8 +45,8 @@
     </pageHeader>
     <detail>
         <band height="15">
-            <textField bookmarkLevel="2">
-                <reportElement x="0" y="0" width="50" height="15" uuid="bb195136-2738-4182-a1b0-00d1ca640bdd"/>
+            <textField>
+                <reportElement  x="0" y="0" width="50" height="15" uuid="bb195136-2738-4182-a1b0-00d1ca640bdd"/>
                 <box leftPadding="10" rightPadding="10">
                     <leftPen lineWidth="0.5"/>
                     <bottomPen lineWidth="0.5"/>
@@ -54,7 +55,7 @@
                 <textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement positionType="Float" x="50" y="0" width="200" height="15" uuid="b98b57f4-ebed-4a29-b69f-b243445bff2d"/>
+                <reportElement x="50" y="0" width="200" height="15" uuid="b98b57f4-ebed-4a29-b69f-b243445bff2d"/>
                 <box leftPadding="10" rightPadding="10">
                     <leftPen lineWidth="0.5"/>
                     <bottomPen lineWidth="0.5"/>
@@ -62,7 +63,7 @@
                 <textFieldExpression><![CDATA[$F{author}]]></textFieldExpression>
             </textField>
             <textField pattern="MM/dd/yyyy">
-                <reportElement positionType="Float" x="250" y="0" width="265" height="15" uuid="f3f2f70e-3138-4834-840c-a87253f1dc30"/>
+                <reportElement   x="250" y="0" width="265" height="15" uuid="f3f2f70e-3138-4834-840c-a87253f1dc30"/>
                 <box leftPadding="10" rightPadding="10">
                     <leftPen lineWidth="0.5"/>
                     <bottomPen lineWidth="0.5"/>
