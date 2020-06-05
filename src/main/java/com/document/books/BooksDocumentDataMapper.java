@@ -22,7 +22,7 @@ public class BooksDocumentDataMapper implements DocumentDataMapper<Book> {
         RecordMap map = new RecordMap();
         map.put(TITLE_NAME, book.name);
         map.put(TITLE_AUTHOR, book.author);
-        map.put(TITLE_YEAR_OF_PUBLISHING, book.yearOfPublishing);
+        map.put(TITLE_YEAR_OF_PUBLISHING, book.dateOfPublication);
         return map;
     }
 }

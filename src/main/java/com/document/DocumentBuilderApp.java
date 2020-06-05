@@ -3,16 +3,29 @@ package com.document;
 import com.document.books.*;
 import com.document.excelFormat.ExcelDocumentBuilder;
 import com.document.excelFormat.poi.*;
+import com.document.jasper.JasperBookReportBuilder;
+import com.document.jasper.ReportData;
+import com.document.jasper.ReportDataFormatProvider;
+import com.document.jasper.ReportDataMapper;
 import com.document.movies.*;
 import com.document.stringformat.StringDocumentBuilder;
+import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DocumentBuilderApp {
 
     public static void main(String[] args) {
-        DocumentBuilder documentBuilder = getExcelDocumentBuilder();
-        BooksDocumentService booksDocumentService = getBooksDocumentService(documentBuilder);
-        String document = booksDocumentService.build();
-        System.out.println(document);
+        BookRepository bookRepository = new BookRepository();
+        ReportDataFormatProvider reportDataFormatProvider = new ReportDataFormatProvider();
+        ReportDataMapper reportDataMapper = new ReportDataMapper(reportDataFormatProvider);
+        Map<String, String> columnsNameMap = new HashMap<>();
+        columnsNameMap.put("name", "Name");
+        ReportData<Book> bookReportData = reportDataMapper.getReportData("Books Report", columnsNameMap,
+                bookRepository.getRecords(), Book.class);
+        JasperBookReportBuilder jasperBookReportBuilder = new JasperBookReportBuilder(new JRXlsxExporter());
+        jasperBookReportBuilder.build(bookReportData, "book_document");
     }
 
     private static StringDocumentBuilder getStringDocumentBuilder() {
