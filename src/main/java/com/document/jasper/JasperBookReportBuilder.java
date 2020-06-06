@@ -21,7 +21,7 @@ import static net.sf.jasperreports.engine.JasperFillManager.fillReport;
 
 public class JasperBookReportBuilder {
 
-    private static final String REPORT_TEMPLATE = "/jasper/book.jrxml";
+    private static final String REPORT_TEMPLATE = "/book.jrxml";
     private static final String REPORT_TITLE = "reportTitle";
 
     private final JRXlsxExporter exporter;

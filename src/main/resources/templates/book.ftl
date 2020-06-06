@@ -11,13 +11,12 @@
     <#list columnDataList as columnData>
     <field name= "${columnData.id}"  class= "${columnData.type.getName()}"/>
     </#list>
-
     <title>
         <band height="70">
             <line>
                 <reportElement x="0" y="0" width="515" height="1" uuid="4058d4f4-b73d-4f3f-80db-3b2857ffb945"/>
             </line>
-            <textField isBlankWhenNull="true" bookmarkLevel="1">
+            <textField isBlankWhenNull="true">
                 <reportElement x="0" y="10" width="515" height="30" uuid="fe78690f-568a-4de4-950e-2355cbc905f1"/>
                 <textElement textAlignment="Center">
                     <font size="22"/>
@@ -27,50 +26,36 @@
         </band>
     </title>
     <pageHeader>
-        <band height="20">
-            <staticText>
-                <reportElement mode="Opaque"  x="0" y="5" width="55" height="15" forecolor="#FFFFFF" backcolor="#333333" uuid="d0bda39f-a3d6-445f-9253-f156c802c4c2"/>
-                <textElement textAlignment="Center"/>
-                <text><![CDATA[NAME]]></text>
-            </staticText>
-            <staticText>
-                <reportElement mode="Opaque"  x="55" y="5" width="205" height="15" forecolor="#FFFFFF" backcolor="#333333" uuid="402baff8-c1df-4c1b-bfcb-0f21529cbf04"/>
-                <text><![CDATA[AUTHOR]]></text>
-            </staticText>
-            <staticText>
-                <reportElement mode="Opaque" x="260" y="5" width="255" height="15" forecolor="#FFFFFF" backcolor="#333333" uuid="b5ff5de3-a2b4-44de-b030-004f471f9b41"/>
-                <text><![CDATA[DATE OF PUBLICATION]]></text>
-            </staticText>
+        <#assign x = 0>
+        <band height="20" >
+            <#list columnDataList as columnData>
+                <staticText>
+                    <reportElement positionType = "Float" stretchType = "RelativeToTallestObject" mode="Opaque"  x="${x}" y="5"
+                                   width="${columnData.width}" height="15" forecolor="#FFFFFF" backcolor="#333333"/>
+                    <textElement textAlignment="Center"/>
+                    <text><![CDATA[${columnData.name}]]></text>
+                </staticText>
+                <#assign x = x + columnData.width>
+            </#list>
         </band>
     </pageHeader>
     <detail>
+        <#assign x = 0>
         <band height="15">
-            <textField>
-                <reportElement  x="0" y="0" width="50" height="15" uuid="bb195136-2738-4182-a1b0-00d1ca640bdd"/>
-                <box leftPadding="10" rightPadding="10">
-                    <leftPen lineWidth="0.5"/>
-                    <bottomPen lineWidth="0.5"/>
-                </box>
-                <textElement textAlignment="Right"/>
-                <textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement x="50" y="0" width="200" height="15" uuid="b98b57f4-ebed-4a29-b69f-b243445bff2d"/>
-                <box leftPadding="10" rightPadding="10">
-                    <leftPen lineWidth="0.5"/>
-                    <bottomPen lineWidth="0.5"/>
-                </box>
-                <textFieldExpression><![CDATA[$F{author}]]></textFieldExpression>
-            </textField>
-            <textField pattern="MM/dd/yyyy">
-                <reportElement   x="250" y="0" width="265" height="15" uuid="f3f2f70e-3138-4834-840c-a87253f1dc30"/>
-                <box leftPadding="10" rightPadding="10">
-                    <leftPen lineWidth="0.5"/>
-                    <bottomPen lineWidth="0.5"/>
-                    <rightPen lineWidth="0.5"/>
-                </box>
-                <textFieldExpression><![CDATA[$F{dateOfPublication}]]></textFieldExpression>
-            </textField>
+            <#list columnDataList as columnData>
+                <textField isStretchWithOverflow = "true"
+                        <#if columnData.formatPattern??> pattern = "${columnData.formatPattern}"</#if>>
+                    <reportElement positionType = "Float" stretchType = "RelativeToTallestObject"
+                                   x="${x}" y="0" width="${columnData.width}" height="15"/>
+                    <box leftPadding="10" rightPadding="10">
+                        <leftPen lineWidth="0.5"/>
+                        <bottomPen lineWidth="0.5"/>
+                    </box>
+                    <textElement textAlignment="Right"/>
+                    <textFieldExpression><![CDATA[$F{${columnData.id}}]]></textFieldExpression>
+                </textField>
+                <#assign x = x + columnData.width>
+            </#list>
         </band>
     </detail>
 </jasperReport>

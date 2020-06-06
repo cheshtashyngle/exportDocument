@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class BookJRXMLBuilder {
     private static final String REPORT_JRXML_TEMPLATE = "book.ftl";
-    private static final String REPORT_JRXML= "src/main/resources/jasper/book.jrxml";
+    private static final String REPORT_JRXML= "src/main/resources/book.jrxml";
     public static final String COLUMN_DATA_LIST_KEY = "columnDataList";
 
     private final Configuration configuration;

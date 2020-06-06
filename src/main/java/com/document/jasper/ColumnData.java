@@ -5,12 +5,14 @@ public class ColumnData {
     private final String name;
     private final Class<?> type;
     private final String formatPattern;
+    private final Integer width;
 
-    public ColumnData(String id, String name, Class<?> type, String formatPattern) {
+    public ColumnData(String id, String name, Class<?> type, String formatPattern, int width) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.formatPattern = formatPattern;
+        this.width = width;
     }
 
     public String getId() {
@@ -27,5 +29,9 @@ public class ColumnData {
 
     public String getFormatPattern() {
         return formatPattern;
+    }
+
+    public Integer getWidth() {
+        return width;
     }
 }

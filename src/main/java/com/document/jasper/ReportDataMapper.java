@@ -17,20 +17,22 @@ public class ReportDataMapper {
 
     public <RecordType> ReportData<RecordType> getReportData(String reportName,
                                                              Map<String, String> columnsNameMap,
+                                                             Map<String, Integer> columnsWidthMap,
                                                              List<RecordType> recordList,
                                                              Class<RecordType> recordType) {
         Map<String, Field> fieldMap = getFieldMap(recordType);
-        List<ColumnData> columnDataList = getColumnData(columnsNameMap, fieldMap);
+        List<ColumnData> columnDataList = getColumnData(columnsNameMap, fieldMap, columnsWidthMap);
 
         return new ReportData<>(reportName, new GridData<>(columnDataList, recordList));
     }
 
-    private List<ColumnData> getColumnData(Map<String, String> columnsNameMap, Map<String, Field> fieldMap) {
+    private List<ColumnData> getColumnData(Map<String, String> columnsNameMap, Map<String, Field> fieldMap,
+                                           Map<String, Integer> columnsWidthMap) {
         return columnsNameMap.keySet().stream().map(columnId -> {
                     Class<?> columnType = fieldMap.get(columnId).getType();
                     String formatPattern = formatProvider.get(columnType);
-                    return new ColumnData(columnId, columnsNameMap.get(columnId),
-                            fieldMap.get(columnId).getType(), formatPattern);
+                    return new ColumnData(columnId, columnsNameMap.get(columnId), fieldMap.get(columnId).getType(),
+                            formatPattern, columnsWidthMap.get(columnId));
             }).collect(Collectors.toList());
     }
 
