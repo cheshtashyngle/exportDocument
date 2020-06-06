@@ -1,7 +1,5 @@
 package com.document.jasper;
 
-import com.document.books.Book;
-import freemarker.template.TemplateException;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -10,47 +8,37 @@ import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static net.sf.jasperreports.engine.JasperCompileManager.compileReport;
 import static net.sf.jasperreports.engine.JasperFillManager.fillReport;
 
-public class JasperBookReportBuilder {
+public class JasperReportBuilder {
 
-    private static final String REPORT_TEMPLATE = "/book.jrxml";
     private static final String REPORT_TITLE = "reportTitle";
+    private static final String XLSX = "xlsx";
 
     private final JRXlsxExporter exporter;
-    private final BookJRXMLBuilder bookJRXMLBuilder;
 
-    public JasperBookReportBuilder(JRXlsxExporter exporter, BookJRXMLBuilder bookJRXMLBuilder) {
+    public JasperReportBuilder(JRXlsxExporter exporter) {
         this.exporter = exporter;
-        this.bookJRXMLBuilder = bookJRXMLBuilder;
     }
 
-    public String build(ReportData<Book> data, String fileName) {
-        try {
-            JasperReport jasperReport = compileTemplate(data.getGridData().getColumnDataList());
-            JasperPrint jasperPrint = populateData(jasperReport, data);
-            exportReport(jasperPrint, fileName + ".xlsx");
-            return jasperPrint.toString();
-        } catch (JRException | IOException | TemplateException exception) {
-            return exception.getLocalizedMessage();
-        }
+    public <RecordType> void build(ReportData<RecordType> data, String templateFileName, String outputFileName)
+            throws JRException{
+        JasperReport jasperReport = compileTemplate(templateFileName);
+        JasperPrint jasperPrint = populateData(jasperReport, data);
+        exportReport(jasperPrint, outputFileName + "." + XLSX);
     }
 
-    private JasperReport compileTemplate(List<ColumnData> columnDataList) throws JRException,
-            IOException, TemplateException {
-        bookJRXMLBuilder.build(columnDataList);
-        InputStream reportStream = getClass().getResourceAsStream(REPORT_TEMPLATE);
+    private JasperReport compileTemplate(String templateFile) throws JRException {
+        InputStream reportStream = getClass().getResourceAsStream("/" + templateFile);
         return compileReport(reportStream);
     }
 
-    private JasperPrint populateData(JasperReport report, ReportData<Book> data) throws JRException {
+    private <RecordType> JasperPrint populateData(JasperReport report, ReportData<RecordType> data) throws JRException {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put(REPORT_TITLE, data.getReportName());
 

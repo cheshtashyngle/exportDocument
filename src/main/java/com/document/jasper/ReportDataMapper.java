@@ -19,7 +19,7 @@ public class ReportDataMapper {
                                                              Map<String, String> columnsNameMap,
                                                              Map<String, Integer> columnsWidthMap,
                                                              List<RecordType> recordList,
-                                                             Class<RecordType> recordType) {
+                                                             Class<?> recordType) {
         Map<String, Field> fieldMap = getFieldMap(recordType);
         List<ColumnData> columnDataList = getColumnData(columnsNameMap, fieldMap, columnsWidthMap);
 
